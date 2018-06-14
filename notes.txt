@@ -1,0 +1,26 @@
+Equations:
+  HP = Torque * RPM % 5252
+  1HP = 33,000 ft*lbs/min
+
+Car Specs:
+  Max power: 140 hp (105 kW) at 5600 rpm
+  Max torque: 152 lb·ft (206 Nm) at 4400 rpm
+  Weight (of system) = 3600 lbs
+
+  Gear Ratios:
+    KA24(D)E & SR20DET (S13/S14):
+    1st- 3.321
+    2nd- 1.902
+    3rd- 1.308
+    4th- 1.000
+    5th- 0.759
+
+With the Nissan, 3000 rpm seems to be some sort of sweet spot...
+
+So I know what the rpms are, but I do not know the HP and the torque.
+
+Convert miles/hour to ft/min:
+  miles/hour * (1/60 hour/min) * (5280 ft/mile) = 88 ft/min
+
+But what is the thing that I'm trying to figure out here? Am I trying to find the... power that is required
+to move the car...?
