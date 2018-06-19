@@ -24,3 +24,7 @@ Convert miles/hour to ft/min:
 
 But what is the thing that I'm trying to figure out here? Am I trying to find the... power that is required
 to move the car...?
+
+6.19.2018 {
+  
+}
