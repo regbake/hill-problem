@@ -1,19 +1,19 @@
-var angle = 10;
+var angle = 0;
 // var incline = document.getElementsByClassName("incline")[0];
 
 function addAngle(){
-  var incline = document.getElementsByClassName("incline")[0];
-  angle++;
+  var incline = document.getElementsByClassName("system")[0];
+  angle--;
 
-  incline.style.transform = "rotate(-" + angle + "deg)";
+  incline.style.transform = "rotate(" + angle + "deg)";
   updateAngle();
 }
 
 function lessAngle(){
-  var incline = document.getElementsByClassName("incline")[0];
-  angle--;
+  var incline = document.getElementsByClassName("system")[0];
+  angle++;
 
-  incline.style.transform = "rotate(-" + angle + "deg)";
+  incline.style.transform = "rotate(" + angle + "deg)";
   updateAngle();
 }
 
