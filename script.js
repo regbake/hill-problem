@@ -4,7 +4,7 @@ var isSlopePositive = undefined;
 // var incline = document.getElementsByClassName("incline")[0];
 
 //interval to keep checking for inflection
-setInterval(checkAngle, 1000);
+setInterval(checkAngle, 60);
 
 function addAngle(){
   var incline = document.getElementsByClassName("system")[0];
@@ -34,11 +34,26 @@ function checkAngle() {
     vehicleX++;
     document.getElementsByClassName("vehicle")[0].style.left = vehicleX + "px";
   }
-  else {
+  else if (angle < 0) {
     isSlopePositive = false;
 
     vehicleX--;
     document.getElementsByClassName("vehicle")[0].style.left = vehicleX + "px";
   }
+}
 
+document.onkeydown = checkKey;
+
+//apply movement functions for left/right keys
+function checkKey(e){
+  e = e || window.event;
+
+  if (e.keyCode == '37'){
+    //left arrow
+    addAngle();
+  }
+  else if (e.keyCode == '39'){
+    //right arrow
+    lessAngle();
+  }
 }

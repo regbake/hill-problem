@@ -31,5 +31,9 @@ to move the car...?
   I suppose there are a couple different parts to this project, I've been mostly thinking about the back end
   calculations and still don't fully understand the relationship between torque/hp/rpms but that's not something that's really a problem.
   It would be great if these calculations could be super specific but then again, there's also the front end to work on. It should mostly
-  be pretty straight forward,
+  be pretty straight forward...
+
+  The Game of Equilibrium!
+    This is kind of a difficult concept to wrap my head around, we're going to be looking at the total acceleration here and it's kind of
+    an interesting thing. 
 }
