@@ -6,6 +6,8 @@ var isSlopePositive = undefined;
 //interval to keep checking for inflection
 setInterval(checkAngle, 60);
 
+document.onkeydown = checkKey;
+
 function addAngle(){
   var incline = document.getElementsByClassName("system")[0];
   angle--;
@@ -42,17 +44,15 @@ function checkAngle() {
   }
 }
 
-document.onkeydown = checkKey;
-
 //apply movement functions for left/right keys
 function checkKey(e){
   e = e || window.event;
 
-  if (e.keyCode == '37'){
+  if (e.keyCode === 37){
     //left arrow
     addAngle();
   }
-  else if (e.keyCode == '39'){
+  else if (e.keyCode === 39){
     //right arrow
     lessAngle();
   }
