@@ -1,0 +1,8 @@
+.incline {
+  width: 200px;
+  height: 5px;
+  background-color: green;
+  position: relative;
+  top: 50px;
+  transform: rotate(-10deg);
+}

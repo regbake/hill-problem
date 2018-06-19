@@ -26,5 +26,10 @@ But what is the thing that I'm trying to figure out here? Am I trying to find th
 to move the car...?
 
 6.19.2018 {
-  
+  This is going to be a model of driving my car up a hill, a system widely encountered with different vehicles.
+
+  I suppose there are a couple different parts to this project, I've been mostly thinking about the back end
+  calculations and still don't fully understand the relationship between torque/hp/rpms but that's not something that's really a problem.
+  It would be great if these calculations could be super specific but then again, there's also the front end to work on. It should mostly
+  be pretty straight forward,
 }
