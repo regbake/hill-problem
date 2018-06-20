@@ -35,5 +35,21 @@ to move the car...?
 
   The Game of Equilibrium!
     This is kind of a difficult concept to wrap my head around, we're going to be looking at the total acceleration here and it's kind of
-    an interesting thing. 
+    an interesting thing.
+
+  4:29pm
+  Thinking about wanting to show the change in velocity as the object moves up/down the ramp.
+  But all that is doing is showing the acceleration. So that's is an interesting thing to consider.
+  I guess it's an interesting thing because of how...
+
+  Acceleration is an increase of speed over time.
+
+  We have acc, vel, and angle.
+
+  The angle will be a known variable, so it is subject to change in time
+  both acc. and vel are dependent
+
+  acc = g*sin(a)
+
+  
 }

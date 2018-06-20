@@ -28,6 +28,13 @@ function updateAngle() {
   document.getElementById("current-angle").innerHTML = angle;
 }
 
+function manageAcceleration(){
+  var acc = 9.8*Math.sin(angle*(Math.PI/180));
+  console.log(acc, angle)
+
+  document.getElementById("current-acc").innerHTML = acc;
+}
+
 //set the angle to pos or negative
 function checkAngle() {
   if (angle > 0){
@@ -35,12 +42,14 @@ function checkAngle() {
 
     vehicleX++;
     document.getElementsByClassName("vehicle")[0].style.left = vehicleX + "px";
+    manageAcceleration();
   }
   else if (angle < 0) {
     isSlopePositive = false;
 
     vehicleX--;
     document.getElementsByClassName("vehicle")[0].style.left = vehicleX + "px";
+    manageAcceleration();
   }
 }
 
