@@ -10,6 +10,7 @@ document.onkeydown = checkKey;
 
 function addAngle(){
   var incline = document.getElementsByClassName("system")[0];
+  //physics...
   angle--;
 
   incline.style.transform = "rotate(" + angle + "deg)";
@@ -18,6 +19,7 @@ function addAngle(){
 
 function lessAngle(){
   var incline = document.getElementsByClassName("system")[0];
+  //physics...
   angle++;
 
   incline.style.transform = "rotate(" + angle + "deg)";
@@ -66,3 +68,6 @@ function checkKey(e){
     lessAngle();
   }
 }
+
+//TODO: Function to measure start and stop time, or time elapsed from inflection point/
+//which is when acc goes from 0 to 1/-1

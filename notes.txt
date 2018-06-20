@@ -51,5 +51,7 @@ to move the car...?
 
   acc = g*sin(a)
 
-  
+  ... so I think I need to find a way to mark time, that must start when there is an inflection point... which happens when the
+
+
 }
