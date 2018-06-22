@@ -3,7 +3,7 @@ var vehicleX = 75;
 var isSlopePositive = undefined;
 var isSlopeSame = undefined;
 var initialTime = undefined;
-var currentTime = undefined;
+var deltaTime = undefined;
 // var incline = document.getElementsByClassName("incline")[0];
 
 //interval to keep checking for inflection
@@ -45,6 +45,8 @@ function manageAcceleration(){
 
 //set the angle to pos or negative
 function checkAngle() {
+  deltaTime = Date.now() - initialTime;
+
   if (angle > 0){
     isSlopePositive = true;
 
