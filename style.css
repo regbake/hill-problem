@@ -1,8 +1,11 @@
-/* body > div {
-  align-content: center;
-} */
+.controls {
+  margin: 0 auto;
+  width: 30%;
+}
 
 .system {
+  margin: 0 auto;
+  width: 30%;
   top: 50px;
   transform: rotate(0deg);
 }

@@ -1,4 +1,3 @@
-var angle = 0; //global angle to maintain
 var vehicleX = 75;
 var isSlopePositive, isSlopeSame, initialTime, deltaTime;
 
@@ -9,56 +8,58 @@ setInterval(checkAngle, 60);
 document.onkeydown = checkKey;
 
 var angleControls = {
+  angle: 0,
   addAngle: function() {
     var incline = document.getElementsByClassName('system')[0];
-    angle--;
+    this.angle--;
 
-    incline.style.transform = 'rotate(' + angle + 'deg)';
+    incline.style.transform = 'rotate(' + this.angle + 'deg)';
     this.updateAngle();
   },
 
   lessAngle: function() {
     var incline = document.getElementsByClassName('system')[0];
-    angle++;
+    this.angle++;
 
-    incline.style.transform = 'rotate(' + angle + 'deg)';
+    incline.style.transform = 'rotate(' + this.angle + 'deg)';
     this.updateAngle();
   },
 
+  //keeps track of current angle in degrees
   updateAngle: function() {
-    document.getElementById('current-angle').innerHTML = angle;
+    document.getElementById('current-angle').innerHTML = this.angle;
 
     initialTime = Date.now();
   }
 };
 
-function manageAcceleration() {
-  var acc = 9.8 * Math.sin(angle * (Math.PI / 180));
+function setAcceleration() {
+  var acc = 9.8 * Math.sin(angleControls.angle * (Math.PI / 180));
 
   document.getElementById('current-acc').innerHTML = acc;
 }
 
 //set the angle to pos or negative
 function checkAngle() {
-  deltaTime = Date.now() - initialTime;
-
-  if (angle > 0) {
+  if (angleControls.angle > 0) {
     isSlopePositive = true;
 
-    //***Change the position of the 'vehivle', simulate move
+    //***Change the position of the 'vehicle', simulate move
     vehicleX++;
     document.getElementsByClassName('vehicle')[0].style.left = vehicleX + 'px';
-    manageAcceleration();
-  } else if (angle < 0) {
+    setAcceleration();
+  } else if (angleControls.angle < 0) {
     isSlopePositive = false;
 
-    //***Change the position of the 'vehivle', simulate move
+    //***Change the position of the 'vehicle', simulate move
     vehicleX--;
     document.getElementsByClassName('vehicle')[0].style.left = vehicleX + 'px';
-    manageAcceleration();
+    setAcceleration();
   } else {
-    //no movement
-    //TODO define edge case
+    //no movement, angle is 0
+    isSlopePositive = null;
+
+    setAcceleration();
   }
 }
 

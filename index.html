@@ -1,23 +1,28 @@
 <!doctype html>
 <html>
-  <head>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="script.js"></script>
-  </head>
-  <body>
-    <!-- ui controls -->
-    <div>
-      <p>l/r arrowkeys work too</p>
-      <input id="add-angle" type="button" value="decrease" onclick="addAngle()">
-      <input id="less-angle" type="button" value="increase" onclick="lessAngle()">
 
-      <h3>angle = <span id="current-angle"> 0 </span> deg</h3>
-      <h3>acceleration = <span id="current-acc"> 0 </span> acceleration units</h3>
-    </div>
+<head>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="script.js"></script>
+</head>
 
-    <div class="system">
-      <div class="vehicle"></div>
-      <div class="incline"></div>
-    </div>
-  </body>
+<body>
+  <!-- ui controls -->
+  <div class="controls">
+    <p>l/r arrowkeys work too</p>
+    <input id="add-angle" type="button" value="decrease" onclick="addAngle()">
+    <input id="less-angle" type="button" value="increase" onclick="lessAngle()">
+
+    <h3>angle =
+      <span id="current-angle"> 0 </span> deg</h3>
+    <h3>acceleration =
+      <span id="current-acc"> 0 </span> acceleration units</h3>
+  </div>
+
+  <div class="system">
+    <div class="vehicle"></div>
+    <div class="incline"></div>
+  </div>
+</body>
+
 </html>
