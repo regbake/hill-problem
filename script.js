@@ -1,8 +1,9 @@
-var vehicleX = 75;
-var isSlopePositive, isSlopeSame, initialTime, deltaTime;
+var vehicleX = 75; // this is just the 'middle' based on pixelsgit
+var isSlopePositive, isSlopeSame, initialTime, nextTime, deltaTime;
 
 //start checking for angle
-setInterval(checkAngle, 60);
+var intervalLength = 60;
+setInterval(checkAngle, intervalLength);
 
 //on any key down
 document.onkeydown = checkKey;
@@ -29,37 +30,63 @@ var angleControls = {
   updateAngle: function() {
     document.getElementById('current-angle').innerHTML = this.angle;
 
-    initialTime = Date.now();
+    initialTime = getTime();
+
+    // ### TO DO: Figure out how to get the initial time of the angle change, and then the next time it is clicked
+    // if (initialTime.min != initialTime) {
+    //   nextTime = getTime();
+    // } else {
+    //   console.log('err');
+    // }
   }
 };
 
-function setAcceleration() {
-  var acc = 9.8 * Math.sin(angleControls.angle * (Math.PI / 180));
+var accelerationControls = {
+  setAcceleration: function() {
+    var acc = 9.8 * Math.sin(angleControls.angle * (Math.PI / 180));
 
-  document.getElementById('current-acc').innerHTML = acc;
-}
+    document.getElementById('current-acc').innerHTML = acc;
+  },
 
-//set the angle to pos or negative
+  calcAcceleration: function(slope) {}
+};
+
+var getTime = function() {
+  var currentTime = new Date();
+  var seconds = currentTime.getSeconds();
+  var minutes = currentTime.getMinutes();
+
+  return {
+    min: minutes,
+    sec: seconds
+  };
+};
+
+// set the angle to pos or negative
+// This is triggered every 1/intervalLength second
 function checkAngle() {
+  // console.log('initial: ', initialTime, ' next time: ', nextTime);
+  // reflect vehicle px position in dom
+  var vehicleLocation = document.getElementById('vehicleX');
+  vehicleLocation.innerHTML = vehicleX;
+
   if (angleControls.angle > 0) {
     isSlopePositive = true;
 
-    //***Change the position of the 'vehicle', simulate move
-    vehicleX++;
+    //***Change the position of the 'vehicle' ++
     document.getElementsByClassName('vehicle')[0].style.left = vehicleX + 'px';
-    setAcceleration();
+    accelerationControls.setAcceleration();
   } else if (angleControls.angle < 0) {
     isSlopePositive = false;
 
-    //***Change the position of the 'vehicle', simulate move
-    vehicleX--;
+    //***Change the position of the 'vehicle' --
     document.getElementsByClassName('vehicle')[0].style.left = vehicleX + 'px';
-    setAcceleration();
+    accelerationControls.setAcceleration();
   } else {
     //no movement, angle is 0
     isSlopePositive = null;
 
-    setAcceleration();
+    accelerationControls.setAcceleration();
   }
 }
 
