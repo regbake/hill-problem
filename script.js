@@ -1,66 +1,60 @@
-var angle = 0;
+var angle = 0; //global angle to maintain
 var vehicleX = 75;
-var isSlopePositive = undefined;
-var isSlopeSame = undefined;
-var initialTime = undefined;
-var deltaTime = undefined;
-// var incline = document.getElementsByClassName("incline")[0];
+var isSlopePositive, isSlopeSame, initialTime, deltaTime;
 
-//interval to keep checking for inflection
+//start checking for angle
 setInterval(checkAngle, 60);
 
+//on any key down
 document.onkeydown = checkKey;
 
-function addAngle(){
-  var incline = document.getElementsByClassName("system")[0];
-  //physics...
-  angle--;
+var angleControls = {
+  addAngle: function() {
+    var incline = document.getElementsByClassName('system')[0];
+    angle--;
 
-  incline.style.transform = "rotate(" + angle + "deg)";
-  updateAngle();
-}
+    incline.style.transform = 'rotate(' + angle + 'deg)';
+    this.updateAngle();
+  },
 
-function lessAngle(){
-  var incline = document.getElementsByClassName("system")[0];
-  //physics...
-  angle++;
+  lessAngle: function() {
+    var incline = document.getElementsByClassName('system')[0];
+    angle++;
 
-  incline.style.transform = "rotate(" + angle + "deg)";
-  updateAngle();
-}
+    incline.style.transform = 'rotate(' + angle + 'deg)';
+    this.updateAngle();
+  },
 
-function updateAngle() {
-  document.getElementById("current-angle").innerHTML = angle;
+  updateAngle: function() {
+    document.getElementById('current-angle').innerHTML = angle;
 
-  //the start time of the angle change
-  initialTime = Date.now();
-}
+    initialTime = Date.now();
+  }
+};
 
-function manageAcceleration(){
-  //calculate acc from angle
-  var acc = 9.8*Math.sin(angle*(Math.PI/180));
+function manageAcceleration() {
+  var acc = 9.8 * Math.sin(angle * (Math.PI / 180));
 
-  document.getElementById("current-acc").innerHTML = acc;
+  document.getElementById('current-acc').innerHTML = acc;
 }
 
 //set the angle to pos or negative
 function checkAngle() {
   deltaTime = Date.now() - initialTime;
 
-  if (angle > 0){
+  if (angle > 0) {
     isSlopePositive = true;
 
     //***Change the position of the 'vehivle', simulate move
     vehicleX++;
-    document.getElementsByClassName("vehicle")[0].style.left = vehicleX + "px";
+    document.getElementsByClassName('vehicle')[0].style.left = vehicleX + 'px';
     manageAcceleration();
-  }
-  else if (angle < 0) {
+  } else if (angle < 0) {
     isSlopePositive = false;
 
     //***Change the position of the 'vehivle', simulate move
     vehicleX--;
-    document.getElementsByClassName("vehicle")[0].style.left = vehicleX + "px";
+    document.getElementsByClassName('vehicle')[0].style.left = vehicleX + 'px';
     manageAcceleration();
   } else {
     //no movement
@@ -68,17 +62,15 @@ function checkAngle() {
   }
 }
 
-//apply movement functions for left/right keys
-function checkKey(e){
+function checkKey(e) {
   e = e || window.event;
 
-  if (e.keyCode === 37){
+  if (e.keyCode === 37) {
     //left arrow
-    addAngle();
-  }
-  else if (e.keyCode === 39){
-    //right arrow
-    lessAngle();
+    angleControls.addAngle();
+  } else if (e.keyCode === 39) {
+    //right
+    angleControls.lessAngle();
   }
 }
 
